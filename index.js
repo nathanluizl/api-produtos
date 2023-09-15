@@ -7,8 +7,7 @@ const server = express()
 const Database = require("./Database.js")
 const Produto = require("./Produtos.js")
 
-const ProdutosServico = require("./produtosServico.ts")
-const produtosServico = new ProdutosServico()
+
 
 server.use(express.json())
 
@@ -24,6 +23,15 @@ function verificaTokenJWT(req, res, next){
         next()
     })
 }
+
+
+
+server.get("/", (req, res) => {
+
+    return res.send("Bem vindo a api de produtos na nuvem")
+})
+
+
 
 server.post("/login", (req, res, next)=>{
     if(req.body.usuario === "neto" && req.body.senha === "123"){
